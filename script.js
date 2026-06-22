@@ -282,3 +282,41 @@ READY
 ========================*/
 
 document.body.classList.add("loaded");
+
+const rulesPopup=document.getElementById("rulesPopup");
+
+const rulesBtn=document.getElementById("rulesBtn");
+
+const closeRules=document.getElementById("closeRules");
+
+const agreeRules=document.getElementById("agreeRules");
+
+const telegramBtn=document.getElementById("telegramBtn");
+
+rulesBtn.onclick=()=>{
+
+rulesPopup.style.display="flex";
+
+};
+
+closeRules.onclick=()=>{
+
+rulesPopup.style.display="none";
+
+};
+
+agreeRules.onchange=()=>{
+
+if(agreeRules.checked){
+
+rulesPopup.style.display="none";
+
+popup.style.display="flex";
+
+copyBtn.disabled=false;
+
+telegramBtn.classList.remove("disabled");
+
+}
+
+};
