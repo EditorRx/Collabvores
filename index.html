@@ -1,156 +1,318 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<title>Maverix Routine System</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Memevores Collab Hub</title>
 
-<style>
-body {
-    font-family: Arial;
-    background: #0f172a;
-    color: white;
-    text-align: center;
-    padding: 20px;
-}
+    <link rel="stylesheet" href="style.css">
 
-h1 {
-    color: #38bdf8;
-}
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap" rel="stylesheet">
 
-.box {
-    margin-top: 20px;
-    padding: 20px;
-    background: #1e293b;
-    border-radius: 10px;
-}
-
-button {
-    padding: 10px 20px;
-    background: #38bdf8;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    margin-bottom: 20px;
-}
-
-.routine {
-    text-align: left;
-    max-width: 400px;
-    margin: auto;
-}
-
-.item {
-    padding: 10px;
-    margin: 5px 0;
-    border-radius: 6px;
-    background: #334155;
-}
-
-.active {
-    background: #22c55e;
-    color: black;
-    font-weight: bold;
-}
-</style>
 </head>
 
 <body>
 
-<h1>⚡ Maverix Routine System</h1>
+<!-- ================= INTRO SCREEN ================= -->
 
-<div class="box">
-    <p>Activate your routine system</p>
-    <button onclick="startSystem()">Start System</button>
+<div id="intro">
 
-    <div class="routine" id="routineList"></div>
+    <div class="intro-box">
+
+        <h1>ARE YOU READY<br>TO COLLAB?</h1>
+
+        <p>
+            Become a part of the Memevores community.
+        </p>
+
+        <button id="enterBtn">
+            🤝 COLLAB
+        </button>
+
+    </div>
+
 </div>
 
-<script>
+<!-- ================= AUDIO ================= -->
 
-const routine = [
-    { start: "06:00", end: "07:40", task: "All Set - Get Ready" },
-    { start: "07:40", end: "10:10", task: "Study" },
-    { start: "10:10", end: "10:30", task: "Break" },
-    { start: "10:30", end: "12:30", task: "Study" },
-    { start: "12:30", end: "13:20", task: "Break" },
-    { start: "13:20", end: "15:20", task: "Study" },
-    { start: "15:20", end: "15:40", task: "Break" },
-    { start: "15:40", end: "17:10", task: "Study" },
-    { start: "17:10", end: "17:40", task: "Chill" },
-    { start: "17:40", end: "19:10", task: "Study" },
-    { start: "19:10", end: "19:40", task: "Dinner Break" },
-    { start: "19:40", end: "20:40", task: "Study" },
-    { start: "20:40", end: "21:00", task: "Break" },
-    { start: "21:00", end: "22:00", task: "Study" },
-    { start: "22:00", end: "23:00", task: "Relax & Prepare" },
-    { start: "23:00", end: "23:59", task: "Sleep" }
-];
+<audio id="bgMusic" loop>
+    <source src="assets/music.mp3" type="audio/mpeg">
+</audio>
 
-function startSystem() {
-    Notification.requestPermission().then(permission => {
-        if (permission !== "granted") {
-            alert("Enable notifications bro 😤");
-            return;
-        }
+<!-- ================= WEBSITE ================= -->
 
-        alert("System Activated 🚀");
+<main id="website">
 
-        renderRoutine();
-        setInterval(updateActiveTask, 1000);
-    });
-}
+<!-- Animated Background -->
 
-function renderRoutine() {
-    const container = document.getElementById("routineList");
-    container.innerHTML = "";
+<div class="background">
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+</div>
 
-    routine.forEach((item, index) => {
-        const div = document.createElement("div");
-        div.className = "item";
-        div.id = "item-" + index;
-        div.innerText = `${item.start} - ${item.end} → ${item.task}`;
-        container.appendChild(div);
-    });
-}
+<!-- ================= HEADER ================= -->
 
-function getMinutes(time) {
-    let [h, m] = time.split(":").map(Number);
-    return h * 60 + m;
-}
+<header>
 
-function updateActiveTask() {
-    const now = new Date();
-    const current = now.getHours() * 60 + now.getMinutes();
+    <div class="logo">
 
-    const currentTimeStr = now.getHours().toString().padStart(2,'0') + ":" +
-                           now.getMinutes().toString().padStart(2,'0');
+    <img src="assets/logo.png" alt="Memevores Logo">
 
-    routine.forEach((item, index) => {
-        const start = getMinutes(item.start);
-        const end = getMinutes(item.end);
+    <div>
 
-        const element = document.getElementById("item-" + index);
+        <h1>MEMEVORES</h1>
 
-        // Highlight active task
-        if (current >= start && current < end) {
-            element.classList.add("active");
-        } else {
-            element.classList.remove("active");
-        }
+        <p>COLLAB HUB</p>
 
-        // Notification (FIXED VERSION)
-        if (currentTimeStr === item.start) {
-            if (!item.notified) {
-                new Notification("⏰ Time Alert", {
-                    body: item.task
-                });
-                item.notified = true;
-            }
-        }
-    });
-}
+    </div>
 
-</script>
+</div>
+
+    <div class="header-buttons">
+
+        <button id="musicToggle">
+            🔊
+        </button>
+
+        <a href="https://youtube.com/@memevores?si=Tk-nXaq5ZWDL9jiZ"
+           target="_blank"
+           class="social-btn">
+            YouTube
+        </a>
+
+        <a href="https://discord.com/"
+           target="_blank"
+           class="social-btn">
+            Discord
+        </a>
+
+        <a href="https://x.com/"
+           target="_blank"
+           class="social-btn">
+            X
+        </a>
+
+    </div>
+
+</header>
+
+<!-- ================= HERO ================= -->
+
+<section class="hero">
+
+    <h2>
+        The Hall of Legendary Collaborations
+    </h2>
+
+    <p>
+        Every creator here has officially collaborated
+        with Memevores.
+    </p>
+
+</section>
+
+<!-- ================= SEARCH ================= -->
+
+<section class="search-section">
+
+    <input
+        type="text"
+        id="searchInput"
+        placeholder="Search collaborator..."
+    >
+
+</section>
+
+<!-- ================= LATEST CARD ================= -->
+
+<section class="latest-card">
+
+    <h3>Latest Collaboration</h3>
+
+    <div class="latest-content">
+
+        <div>
+
+            <h4 id="latestName">
+                Creator Name
+            </h4>
+
+            <p>
+                Latest official collaboration.
+            </p>
+
+        </div>
+
+        <a
+            id="latestVideo"
+            href="#"
+            target="_blank"
+            class="watch-btn"
+        >
+            Watch
+        </a>
+
+    </div>
+
+</section>
+
+<!-- ================= TABLE ================= -->
+
+<section class="table-section">
+
+<table id="collabTable">
+
+<thead>
+
+<tr>
+
+<th>#</th>
+
+<th>Collaborated With</th>
+
+<th>Visit Channel</th>
+
+<th>Collab Video</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+
+<tr>
+
+<td>1.</td>
+
+<td>Eevu</td>
+
+<td>
+
+<a href="https://youtube.com/@eevu-w8e?si=j4B7hxbZDFz9Dk8z"
+target="_blank">
+
+Visit
+</a></td><td>
+
+<a href="https://youtube.com/shorts/tVf7M_agCmg?si=Gpfb4Ebc2wJpsMLh"
+target="_blank">
+
+Watch
+</a></td></tr><tr>
+
+<td>2.</td><td>SutureSurge</td><td>
+
+<a href="https://youtube.com/@suturesurge?si=GTdvmrXhIi9nmrLR"
+target="_blank">
+
+Visit
+</a></td><td>
+
+<a href="https://youtube.com/shorts/bPPJOi01MYQ?si=CsnYuMfwtex8_re5"
+target="_blank">
+
+Watch
+
+</a></td></tr>
+
+<td>3.</td><td>ItzUrSatoruツ</td><td>
+
+<a href="https://youtube.com/@satoru-amz655?si=i7f_I5d458nQkkaW"
+target="_blank">
+
+Visit
+</a></td><td>
+
+<a href="https://youtube.com/shorts/_WrmeaseePo?si=k-skl-NISKDSJtUc"
+target="_blank">
+
+Watch
+
+</a></td></tr>
+
+<tr>
+<td>4.</td>
+
+<td>Coming Soon...</td>
+
+<td>-</td>
+
+<td>-</td>
+
+</tr>
+</tbody>
+
+</table>
+
+</section>
+
+<!-- ================= REQUEST COLLAB ================= -->
+
+<section class="request-section">
+
+    <button id="openPopup" class="request-btn">
+        🤝 Request Collaboration
+    </button>
+
+</section>
+
+<!-- ================= POPUP ================= -->
+
+<div id="popup" class="popup">
+
+    <div class="popup-box">
+
+        <button id="closePopup" class="close-btn">
+            &times;
+        </button>
+
+        <h2>Request Collaboration</h2>
+
+        <p>
+            Copy the message below and send it to me on Telegram.
+        </p>
+
+        <textarea
+            id="copyText"
+            readonly
+>Collab with me.
+
+My idea is:</textarea>
+
+        <button id="copyBtn" class="copy-btn">
+            📋 Copy Message
+        </button>
+
+        <a
+            href="https://t.me/YOUR_USERNAME"
+            target="_blank"
+            class="telegram-btn"
+        >
+            📨 Send on Telegram
+        </a>
+
+    </div>
+
+</div>
+
+<!-- ================= FOOTER ================= -->
+
+<footer>
+
+    <p>
+        Created by <strong>Memevores</strong>
+    </p>
+
+</footer>
+
+</main>
+
+<script src="script.js"></script>
 
 </body>
 </html>
