@@ -284,19 +284,77 @@ Watch
 
 My idea is:[Enter your idea here]</textarea>
 
-        <button id="copyBtn" class="copy-btn">
-            📋 Copy Message
-        </button>
+        <button id="copyBtn" class="copy-btn" disabled>
+    📋 Copy Message
+</button>
 
-        <a
-            href="https://t.me/ggdrink2"
-            target="_blank"
-            class="telegram-btn"
-        >
+<a
+    id="telegramBtn"
+    class="telegram-btn disabled"
+    href="https://t.me/YOUR_USERNAME"
+    target="_blank"
+>
+    📨 Send on Telegram
+</a>
             📨 Send on Telegram
         </a>
 
     </div>
+
+</div>
+
+    <!-- RULES POPUP -->
+
+<div id="rulesPopup" class="popup">
+
+<div class="popup-box">
+
+<button id="closeRules" class="close-btn">&times;</button>
+
+<h2>📜 Collaboration Rules</h2>
+
+<div class="rules-text">
+
+<p><b>1.</b> Copy the collaboration message and send it to me on Telegram.</p>
+
+<br>
+
+<p><b>2.</b> Write <b>ONE original meme idea.</b><br>
+❌ Do not copy meme ideas from other creators.</p>
+
+<br>
+
+<p><b>3.</b> If your meme idea is selected, I'll create the meme and upload it on <b>Memevores</b>.</p>
+
+<br>
+
+<p><b>4.</b> After uploading, I'll send you the collaboration link on Telegram.</p>
+
+<br>
+
+<hr>
+
+<br>
+
+<h3>📝 Notes</h3>
+
+<p>• Please wait <b>1–3 days</b>.</p>
+
+<p>• Install <b>YouTube Studio</b> before collaborating, as you'll need it to accept the collaboration request.</p>
+
+<br>
+
+<label class="agree">
+
+<input type="checkbox" id="agreeRules">
+
+I have read and understood the rules.
+
+</label>
+
+</div>
+
+</div>
 
 </div>
 
